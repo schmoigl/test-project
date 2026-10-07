@@ -2,3 +2,30 @@
 body {
     font-family: "Century Gothic"
 }
+
+/* Class: applies to every element with class="myLink" */
+.myLink {
+    text-decoration: none;
+    color: green;
+}
+
+/* :hover only applies while the mouse is over the element */
+.myLink:hover {
+    text-decoration: underline;
+    color: darkgreen;
+}
+
+/* ID: applies only to the one element with id="bigLink" */
+#bigLink {
+    font-size: 30px;
+}
+
+/* All logos are small ... */
+.myLogo {
+    width: 100px;
+}
+
+/* ... except those inside an .imageContainer div (more specific rule wins) */
+.imageContainer .myLogo {
+    width: 200px;
+}
