@@ -19,16 +19,3 @@ body {
 #bigLink {
     font-size: 30px;
 }
-
-/* Div: one box around everything inside ::: {.keyFindings} */
-.keyFindings {
-    background-color: #f0f7f4;
-    border-left: 5px solid green;
-    padding: 10px 20px;
-    margin: 20px 0;
-}
-
-/* Only bold text INSIDE a .keyFindings box is red */
-.keyFindings strong {
-    color: darkred;
-}
