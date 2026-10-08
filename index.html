@@ -180,10 +180,6 @@ window.Quarto = {
     <a class="nav-link active" href="./index.html" aria-current="page"> 
 <span class="menu-text">Home</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./playground.html"> 
-<span class="menu-text">Playground</span></a>
-  </li>  
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
@@ -228,17 +224,11 @@ window.Quarto = {
 <h1>Example Repo</h1>
 <p>https://github.com/schmoigl/test-project/</p>
 <p>This Quarto file is showcasing what Quarto can do. Everything outside of code chunks is written in <strong>Markdown</strong>, a simple syntax for formatting plain text.</p>
-<section id="links" class="level2">
-<h2 class="anchored" data-anchor-id="links">Links</h2>
+<section id="basic-syntax" class="level2">
+<h2 class="anchored" data-anchor-id="basic-syntax">Basic Syntax</h2>
+<p>One star makes text italic (<code>*italic*</code>), two stars make it bold (<code>**bold**</code>): <em>italic text</em> <strong>bold text</strong></p>
 <p>Write links as <code>[text](url)</code>. Options go in curly braces afterwards, e.g.&nbsp;<code>{target="_blank"}</code> opens the link in a new tab: <a href="https://data-science.wifo.ac.at/lecture-notes/" target="_blank">This is a link</a> to the lecture notes.</p>
 <p>Since the output is a web page, you can also write plain HTML: <a href="https://data-science.wifo.ac.at/lecture-notes/">Same link</a></p>
-</section>
-<section id="text-formatting" class="level2">
-<h2 class="anchored" data-anchor-id="text-formatting">Text formatting</h2>
-<p>One star makes text italic (<code>*italic*</code>), two stars make it bold (<code>**bold**</code>): <em>italic text</em> <strong>bold text</strong></p>
-</section>
-<section id="images" class="level2">
-<h2 class="anchored" data-anchor-id="images">Images</h2>
 <p>Images work like links, but with a <code>!</code> in front: <code>![caption](path)</code>. Size and alignment are set in curly braces:</p>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
@@ -246,9 +236,6 @@ window.Quarto = {
 <figcaption>Images</figcaption>
 </figure>
 </div>
-</section>
-<section id="divs-classes-and-ids" class="level2">
-<h2 class="anchored" data-anchor-id="divs-classes-and-ids">Divs, classes and IDs</h2>
 <p>Quarto turns every element into HTML, and you can label elements so that CSS rules (in <code>style.css</code>) can target them:</p>
 <ul>
 <li>A <strong>class</strong> (<code>.name</code>) can be given to many elements, and every one of them gets the same style.</li>
@@ -261,36 +248,29 @@ window.Quarto = {
 <p>This link also has the ID <code>bigLink</code>, so the <code>#bigLink</code> rule makes it bigger as well:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Big link to WIFO</span><span class="co">](https://www.wifo.ac.at)</span>{target="_blank" .myLink #bigLink}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><a href="https://www.wifo.ac.at" id="bigLink" class="myLink" target="_blank">Big link to WIFO</a></p>
-<p>Both logos below have the class <code>myLogo</code>, which makes logos 100px wide. The second one sits inside a div with the class <code>imageContainer</code>, and the rule <code>.imageContainer .myLogo</code> (200px) only applies to logos inside such a div:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="al">![Outside the div](img/wu.svg)</span>{fig-align="left" .myLogo}</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>::: {.imageContainer}</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="al">![Inside the div](img/wu.svg)</span>{fig-align="left" .myLogo}</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>:::</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="quarto-figure quarto-figure-left">
-<figure class="figure">
-<p><img src="img/wu.svg" class="myLogo img-fluid figure-img"></p>
-<figcaption>Outside the div</figcaption>
-</figure>
-</div>
-<div class="imageContainer">
-<div class="quarto-figure quarto-figure-left">
-<figure class="figure">
-<p><img src="img/wu.svg" class="myLogo img-fluid figure-img"></p>
-<figcaption>Inside the div</figcaption>
-</figure>
-</div>
-</div>
+<p>Divs are useful when several elements belong together, e.g.&nbsp;a “key findings” box as in many reports. The div below has the class <code>keyFindings</code>, which draws one box around the heading, text and list inside it. The rule <code>.keyFindings strong</code> makes <strong>bold text</strong> red, but only inside such a box:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>::: {.keyFindings}</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Key findings</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Quarto combines **text, code and results** in one document</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Results **update automatically** when the data changes</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>:::</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="key-findings" class="level4 keyFindings">
+<h4 class="anchored" data-anchor-id="key-findings">Key findings</h4>
+<ul>
+<li>Quarto combines <strong>text, code and results</strong> in one document</li>
+<li>Results <strong>update automatically</strong> when the data changes</li>
+</ul>
+</section>
+<p>Since the style lives in <code>style.css</code>, every <code>keyFindings</code> box in the whole website looks the same, and changing one CSS rule restyles all of them.</p>
 <p>Quarto also comes with built-in classes. For example, <code>.column-screen-inset</code> lets content break out of the narrow text column and use (almost) the full screen width. The table in the R section below uses it.</p>
 </section>
-<section id="formulas" class="level2">
-<h2 class="anchored" data-anchor-id="formulas">Formulas</h2>
+<section id="tex" class="level2">
+<h2 class="anchored" data-anchor-id="tex">TeX</h2>
+<p>TeX (or LaTeX) is the standard typesetting system in science. Quarto borrows two of its most useful features: formulas and references.</p>
 <p>You can write LaTeX (TeX) formulas. Enclose them in <code>$...$</code> for a formula within the text, like <span class="math inline">\(x_1 + x_2\)</span>, or in <code>$$...$$</code> for a centered formula on its own line:</p>
 <p><span class="math display">\[ x_1 + x_2 \]</span></p>
-</section>
-<section id="citations" class="level2">
-<h2 class="anchored" data-anchor-id="citations">Citations</h2>
-<p>References are stored in <code>bibliography.bib</code> (linked in the header at the top of this file). Cite them with <code>@key</code>, and Quarto adds the reference list at the end of the page automatically: As seen <span class="citation" data-cites="eppel2024active">Eppel et al. (<a href="#ref-eppel2024active" role="doc-biblioref">2024</a>)</span></p>
+<p>References are stored in <code>bibliography.bib</code>, in the BibTeX format used by LaTeX (linked in the header at the top of this file). Cite them with <code>@key</code>, and Quarto adds the reference list at the end of the page automatically: As seen <span class="citation" data-cites="eppel2024active">Eppel et al. (<a href="#ref-eppel2024active" role="doc-biblioref">2024</a>)</span></p>
 </section>
 <section id="r-code" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="r-code">R code</h2>
@@ -339,31 +319,28 @@ window.Quarto = {
 </table>
 <p>Options can also be set for the whole document in the header at the top (e.g.&nbsp;<code>execute: echo: false</code>). The chunk below shows its code (<code>echo: true</code>) but hides the package messages (<code>message: false</code>):</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'ggplot2' was built under R version 4.4.3</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/cases.csv"</span>)</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>plot_data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(case_nr, <span class="fu">c</span>(<span class="st">"court"</span>, <span class="st">"case_nr"</span>), <span class="st">", "</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(court, month) <span class="sc">%&gt;%</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(<span class="at">name =</span> <span class="st">"cases"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(court) <span class="sc">%&gt;%</span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sum_cases =</span> <span class="fu">sum</span>(cases, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(sum_cases <span class="sc">&gt;</span> <span class="dv">100</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(plot_data, <span class="st">"data/plot_data.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/cases.csv"</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>plot_data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(case_nr, <span class="fu">c</span>(<span class="st">"court"</span>, <span class="st">"case_nr"</span>), <span class="st">", "</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(court, month) <span class="sc">%&gt;%</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(<span class="at">name =</span> <span class="st">"cases"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(court) <span class="sc">%&gt;%</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sum_cases =</span> <span class="fu">sum</span>(cases, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(sum_cases <span class="sc">&gt;</span> <span class="dv">100</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(plot_data, <span class="st">"data/plot_data.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Without options, both the code and its output (here a table) are shown. The chunk is wrapped in a <code>::: {.column-screen-inset}</code> div, so the table uses the full screen width:</p>
 <div class="column-screen-inset">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>plot_data <span class="sc">%&gt;%</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">row_number</span>() <span class="sc">&lt;=</span> <span class="dv">15</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="st">"html"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>plot_data <span class="sc">%&gt;%</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">row_number</span>() <span class="sc">&lt;=</span> <span class="dv">15</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="st">"html"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <thead>
@@ -476,7 +453,7 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="interactive-elements-ojs">Interactive elements (OJS)</h2>
 <p>OJS chunks (<code>```{ojs}</code>) run JavaScript in the reader’s browser, so the page stays interactive without a server. Move the slider:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8" data-startfrom="136" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 135;"><span id="cb8-136"><a href="#cb8-136" aria-hidden="true" tabindex="-1"></a>viewof rating <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">1</span><span class="op">,</span> <span class="dv">10</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="dv">5</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Rating"</span>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6" data-startfrom="134" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 133;"><span id="cb6-134"><a href="#cb6-134" aria-hidden="true" tabindex="-1"></a>viewof rating <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">1</span><span class="op">,</span> <span class="dv">10</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="dv">5</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Rating"</span>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-1" data-nodetype="declaration">
 
@@ -486,11 +463,11 @@ window.Quarto = {
 <p>I would rate this class <span><span id="ojs-element-id-1"></span></span></p>
 <p>OJS can read the data that the R code saved above:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9" data-startfrom="145" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 144;"><span id="cb9-145"><a href="#cb9-145" aria-hidden="true" tabindex="-1"></a>raw <span class="op">=</span> <span class="fu">FileAttachment</span>(<span class="st">"data/plot_data.csv"</span>)</span>
-<span id="cb9-146"><a href="#cb9-146" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-147"><a href="#cb9-147" aria-hidden="true" tabindex="-1"></a>plot_data <span class="op">=</span> raw<span class="op">.</span><span class="fu">csv</span>()</span>
-<span id="cb9-148"><a href="#cb9-148" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-149"><a href="#cb9-149" aria-hidden="true" tabindex="-1"></a>plot_data</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7" data-startfrom="143" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 142;"><span id="cb7-143"><a href="#cb7-143" aria-hidden="true" tabindex="-1"></a>raw <span class="op">=</span> <span class="fu">FileAttachment</span>(<span class="st">"data/plot_data.csv"</span>)</span>
+<span id="cb7-144"><a href="#cb7-144" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-145"><a href="#cb7-145" aria-hidden="true" tabindex="-1"></a>plot_data <span class="op">=</span> raw<span class="op">.</span><span class="fu">csv</span>()</span>
+<span id="cb7-146"><a href="#cb7-146" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-147"><a href="#cb7-147" aria-hidden="true" tabindex="-1"></a>plot_data</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-2-1" data-nodetype="declaration">
@@ -512,7 +489,7 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10" data-startfrom="151" data-source-offset="-78"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 150;"><span id="cb10-151"><a href="#cb10-151" aria-hidden="true" tabindex="-1"></a><span class="kw">new</span> <span class="bu">Set</span>(plot_data<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">court</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8" data-startfrom="149" data-source-offset="-78"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 148;"><span id="cb8-149"><a href="#cb8-149" aria-hidden="true" tabindex="-1"></a><span class="kw">new</span> <span class="bu">Set</span>(plot_data<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">court</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-2-4" data-nodetype="expression">
@@ -523,21 +500,21 @@ window.Quarto = {
 </div>
 <p>The chart and text below react to the inputs. OJS cells may appear in any order, since they update whenever a value they depend on changes:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11" data-startfrom="157" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 156;"><span id="cb11-157"><a href="#cb11-157" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> {vl} <span class="im">from</span> <span class="st">"@vega/vega-lite-api"</span></span>
-<span id="cb11-158"><a href="#cb11-158" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-159"><a href="#cb11-159" aria-hidden="true" tabindex="-1"></a>vl<span class="op">.</span><span class="fu">markLine</span>()</span>
-<span id="cb11-160"><a href="#cb11-160" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">encode</span>(</span>
-<span id="cb11-161"><a href="#cb11-161" aria-hidden="true" tabindex="-1"></a>    vl<span class="op">.</span><span class="fu">x</span>()</span>
-<span id="cb11-162"><a href="#cb11-162" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="fu">fieldT</span>(<span class="st">"month"</span>)</span>
-<span id="cb11-163"><a href="#cb11-163" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="fu">axis</span>({ <span class="dt">grid</span><span class="op">:</span> <span class="kw">false</span> })<span class="op">,</span></span>
-<span id="cb11-164"><a href="#cb11-164" aria-hidden="true" tabindex="-1"></a>    vl<span class="op">.</span><span class="fu">y</span>()</span>
-<span id="cb11-165"><a href="#cb11-165" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="fu">fieldQ</span>(<span class="st">"cases"</span>)<span class="op">,</span></span>
-<span id="cb11-166"><a href="#cb11-166" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb11-167"><a href="#cb11-167" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">data</span>(plot_data<span class="op">.</span><span class="fu">filter</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">court</span> <span class="op">==</span> court))</span>
-<span id="cb11-168"><a href="#cb11-168" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">width</span>(width <span class="op">-</span> <span class="dv">100</span>)</span>
-<span id="cb11-169"><a href="#cb11-169" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">height</span>(<span class="dv">300</span>)</span>
-<span id="cb11-170"><a href="#cb11-170" aria-hidden="true" tabindex="-1"></a><span class="co">//   .config(config)</span></span>
-<span id="cb11-171"><a href="#cb11-171" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">render</span>({ <span class="dt">renderer</span><span class="op">:</span> <span class="st">"svg"</span> })</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9" data-startfrom="155" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 154;"><span id="cb9-155"><a href="#cb9-155" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> {vl} <span class="im">from</span> <span class="st">"@vega/vega-lite-api"</span></span>
+<span id="cb9-156"><a href="#cb9-156" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-157"><a href="#cb9-157" aria-hidden="true" tabindex="-1"></a>vl<span class="op">.</span><span class="fu">markLine</span>()</span>
+<span id="cb9-158"><a href="#cb9-158" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">encode</span>(</span>
+<span id="cb9-159"><a href="#cb9-159" aria-hidden="true" tabindex="-1"></a>    vl<span class="op">.</span><span class="fu">x</span>()</span>
+<span id="cb9-160"><a href="#cb9-160" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="fu">fieldT</span>(<span class="st">"month"</span>)</span>
+<span id="cb9-161"><a href="#cb9-161" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="fu">axis</span>({ <span class="dt">grid</span><span class="op">:</span> <span class="kw">false</span> })<span class="op">,</span></span>
+<span id="cb9-162"><a href="#cb9-162" aria-hidden="true" tabindex="-1"></a>    vl<span class="op">.</span><span class="fu">y</span>()</span>
+<span id="cb9-163"><a href="#cb9-163" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="fu">fieldQ</span>(<span class="st">"cases"</span>)<span class="op">,</span></span>
+<span id="cb9-164"><a href="#cb9-164" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb9-165"><a href="#cb9-165" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">data</span>(plot_data<span class="op">.</span><span class="fu">filter</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">court</span> <span class="op">==</span> court))</span>
+<span id="cb9-166"><a href="#cb9-166" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">width</span>(width <span class="op">/</span> <span class="dv">2</span>)</span>
+<span id="cb9-167"><a href="#cb9-167" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">height</span>(<span class="dv">300</span>)</span>
+<span id="cb9-168"><a href="#cb9-168" aria-hidden="true" tabindex="-1"></a><span class="co">//   .config(config)</span></span>
+<span id="cb9-169"><a href="#cb9-169" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">render</span>({ <span class="dt">renderer</span><span class="op">:</span> <span class="st">"svg"</span> })</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-3-1" data-nodetype="declaration">
@@ -553,9 +530,9 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<p>The chart width is set with <code>.width(width - 100)</code>. <code>width</code> is a built-in OJS value: the width of the page’s text column in pixels. It updates whenever the browser window is resized, and everything that uses it (like the chart) is redrawn. We subtract 100 to leave room for the axis labels. Resize your window and watch the number below change:</p>
+<p>The chart width is set with <code>.width(width / 2)</code>. <code>width</code> is a built-in OJS value: the width of the page’s text column in pixels. It updates whenever the browser window is resized, and everything that uses it (like the chart) is redrawn. We subtract 100 to leave room for the axis labels. Resize your window and watch the number below change:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12" data-startfrom="176" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 175;"><span id="cb12-176"><a href="#cb12-176" aria-hidden="true" tabindex="-1"></a>width</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10" data-startfrom="174" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 173;"><span id="cb10-174"><a href="#cb10-174" aria-hidden="true" tabindex="-1"></a>width</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-4" data-nodetype="expression">
 
@@ -563,17 +540,17 @@ window.Quarto = {
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13" data-startfrom="181" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 180;"><span id="cb13-181"><a href="#cb13-181" aria-hidden="true" tabindex="-1"></a>viewof court <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">select</span>(</span>
-<span id="cb13-182"><a href="#cb13-182" aria-hidden="true" tabindex="-1"></a>  [<span class="st">"BG Favoriten"</span><span class="op">,</span> <span class="st">"BG Fünfhaus"</span>]<span class="op">,</span></span>
-<span id="cb13-183"><a href="#cb13-183" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">label</span><span class="op">:</span> <span class="st">"Select a court: "</span>}</span>
-<span id="cb13-184"><a href="#cb13-184" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb13-185"><a href="#cb13-185" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-186"><a href="#cb13-186" aria-hidden="true" tabindex="-1"></a>viewof month <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">select</span>(</span>
-<span id="cb13-187"><a href="#cb13-187" aria-hidden="true" tabindex="-1"></a>  [<span class="st">"2008-01-01"</span><span class="op">,</span> <span class="st">"2009-01-01"</span>]<span class="op">,</span></span>
-<span id="cb13-188"><a href="#cb13-188" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">label</span><span class="op">:</span> <span class="st">"Select a year: "</span>}</span>
-<span id="cb13-189"><a href="#cb13-189" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb13-190"><a href="#cb13-190" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-191"><a href="#cb13-191" aria-hidden="true" tabindex="-1"></a>numberOfCases <span class="op">=</span> plot_data<span class="op">.</span><span class="fu">filter</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">court</span> <span class="op">==</span> court <span class="op">&amp;&amp;</span> d<span class="op">.</span><span class="at">month</span> <span class="op">==</span> month)<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">cases</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11" data-startfrom="179" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 178;"><span id="cb11-179"><a href="#cb11-179" aria-hidden="true" tabindex="-1"></a>viewof court <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">select</span>(</span>
+<span id="cb11-180"><a href="#cb11-180" aria-hidden="true" tabindex="-1"></a>  [<span class="st">"BG Favoriten"</span><span class="op">,</span> <span class="st">"BG Fünfhaus"</span>]<span class="op">,</span></span>
+<span id="cb11-181"><a href="#cb11-181" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">label</span><span class="op">:</span> <span class="st">"Select a court: "</span>}</span>
+<span id="cb11-182"><a href="#cb11-182" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb11-183"><a href="#cb11-183" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-184"><a href="#cb11-184" aria-hidden="true" tabindex="-1"></a>viewof month <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">select</span>(</span>
+<span id="cb11-185"><a href="#cb11-185" aria-hidden="true" tabindex="-1"></a>  [<span class="st">"2008-01-01"</span><span class="op">,</span> <span class="st">"2009-01-01"</span>]<span class="op">,</span></span>
+<span id="cb11-186"><a href="#cb11-186" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">label</span><span class="op">:</span> <span class="st">"Select a year: "</span>}</span>
+<span id="cb11-187"><a href="#cb11-187" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb11-188"><a href="#cb11-188" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-189"><a href="#cb11-189" aria-hidden="true" tabindex="-1"></a>numberOfCases <span class="op">=</span> plot_data<span class="op">.</span><span class="fu">filter</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">court</span> <span class="op">==</span> court <span class="op">&amp;&amp;</span> d<span class="op">.</span><span class="at">month</span> <span class="op">==</span> month)<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">cases</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-5-1" data-nodetype="declaration">
@@ -614,7 +591,7 @@ Eppel, Rainer, Ulrike Huemer, Helmut Mahringer, and Lukas Schmoigl. 2024. <span>
 </div>
 </div></section></div></main> <!-- /main -->
 <script type="ojs-module-contents">
-eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InZpZXdvZiByYXRpbmcgPSBJbnB1dHMucmFuZ2UoWzEsIDEwXSwge3ZhbHVlOiA1LCBzdGVwOiAxLCBsYWJlbDogXCJSYXRpbmdcIn0pXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTIiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJyYXcgPSBGaWxlQXR0YWNobWVudChcImRhdGEvcGxvdF9kYXRhLmNzdlwiKVxuXG5wbG90X2RhdGEgPSByYXcuY3N2KClcblxucGxvdF9kYXRhXG5cbm5ldyBTZXQocGxvdF9kYXRhLm1hcChkID0+IGQuY291cnQpKVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0zIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoiaW1wb3J0IHt2bH0gZnJvbSBcIkB2ZWdhL3ZlZ2EtbGl0ZS1hcGlcIlxuXG52bC5tYXJrTGluZSgpXG4gIC5lbmNvZGUoXG4gICAgdmwueCgpXG4gICAgICAuZmllbGRUKFwibW9udGhcIilcbiAgICAgIC5heGlzKHsgZ3JpZDogZmFsc2UgfSksXG4gICAgdmwueSgpXG4gICAgICAuZmllbGRRKFwiY2FzZXNcIiksXG4gIClcbiAgLmRhdGEocGxvdF9kYXRhLmZpbHRlcihkID0+IGQuY291cnQgPT0gY291cnQpKVxuICAud2lkdGgod2lkdGggLSAxMDApXG4gIC5oZWlnaHQoMzAwKVxuLy8gICAuY29uZmlnKGNvbmZpZylcbiAgLnJlbmRlcih7IHJlbmRlcmVyOiBcInN2Z1wiIH0pXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTQiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJ3aWR0aFxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC01IiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoidmlld29mIGNvdXJ0ID0gSW5wdXRzLnNlbGVjdChcbiAgW1wiQkcgRmF2b3JpdGVuXCIsIFwiQkcgRsO8bmZoYXVzXCJdLFxuICB7bGFiZWw6IFwiU2VsZWN0IGEgY291cnQ6IFwifVxuICApXG5cbnZpZXdvZiBtb250aCA9IElucHV0cy5zZWxlY3QoXG4gIFtcIjIwMDgtMDEtMDFcIiwgXCIyMDA5LTAxLTAxXCJdLFxuICB7bGFiZWw6IFwiU2VsZWN0IGEgeWVhcjogXCJ9XG4gIClcblxubnVtYmVyT2ZDYXNlcyA9IHBsb3RfZGF0YS5maWx0ZXIoZCA9PiBkLmNvdXJ0ID09IGNvdXJ0ICYmIGQubW9udGggPT0gbW9udGgpLm1hcChkID0+IGQuY2FzZXMpXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ3JhdGluZycpIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdjb3VydCcpIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdtb250aCcpIn1dfQ==
+eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InZpZXdvZiByYXRpbmcgPSBJbnB1dHMucmFuZ2UoWzEsIDEwXSwge3ZhbHVlOiA1LCBzdGVwOiAxLCBsYWJlbDogXCJSYXRpbmdcIn0pXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTIiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJyYXcgPSBGaWxlQXR0YWNobWVudChcImRhdGEvcGxvdF9kYXRhLmNzdlwiKVxuXG5wbG90X2RhdGEgPSByYXcuY3N2KClcblxucGxvdF9kYXRhXG5cbm5ldyBTZXQocGxvdF9kYXRhLm1hcChkID0+IGQuY291cnQpKVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0zIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoiaW1wb3J0IHt2bH0gZnJvbSBcIkB2ZWdhL3ZlZ2EtbGl0ZS1hcGlcIlxuXG52bC5tYXJrTGluZSgpXG4gIC5lbmNvZGUoXG4gICAgdmwueCgpXG4gICAgICAuZmllbGRUKFwibW9udGhcIilcbiAgICAgIC5heGlzKHsgZ3JpZDogZmFsc2UgfSksXG4gICAgdmwueSgpXG4gICAgICAuZmllbGRRKFwiY2FzZXNcIiksXG4gIClcbiAgLmRhdGEocGxvdF9kYXRhLmZpbHRlcihkID0+IGQuY291cnQgPT0gY291cnQpKVxuICAud2lkdGgod2lkdGggLyAyKVxuICAuaGVpZ2h0KDMwMClcbi8vICAgLmNvbmZpZyhjb25maWcpXG4gIC5yZW5kZXIoeyByZW5kZXJlcjogXCJzdmdcIiB9KVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC00IiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoid2lkdGhcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtNSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InZpZXdvZiBjb3VydCA9IElucHV0cy5zZWxlY3QoXG4gIFtcIkJHIEZhdm9yaXRlblwiLCBcIkJHIEbDvG5maGF1c1wiXSxcbiAge2xhYmVsOiBcIlNlbGVjdCBhIGNvdXJ0OiBcIn1cbiAgKVxuXG52aWV3b2YgbW9udGggPSBJbnB1dHMuc2VsZWN0KFxuICBbXCIyMDA4LTAxLTAxXCIsIFwiMjAwOS0wMS0wMVwiXSxcbiAge2xhYmVsOiBcIlNlbGVjdCBhIHllYXI6IFwifVxuICApXG5cbm51bWJlck9mQ2FzZXMgPSBwbG90X2RhdGEuZmlsdGVyKGQgPT4gZC5jb3VydCA9PSBjb3VydCAmJiBkLm1vbnRoID09IG1vbnRoKS5tYXAoZCA9PiBkLmNhc2VzKVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdyYXRpbmcnKSJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgnY291cnQnKSJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgnbW9udGgnKSJ9XX0=
 </script>
 <script type="module">
 if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
