@@ -2,10 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://schmoigl.github.io/test-project/playground.html</loc>
-    <lastmod>2026-10-08T08:29:08.027Z</lastmod>
+    <lastmod>2026-10-07T15:26:42.224Z</lastmod>
+  </url>
+  <url>
+    <loc>https://schmoigl.github.io/test-project/code-databases-api.html</loc>
+    <lastmod>2026-10-08T12:08:15.785Z</lastmod>
   </url>
   <url>
     <loc>https://schmoigl.github.io/test-project/index.html</loc>
-    <lastmod>2026-10-08T08:29:08.027Z</lastmod>
+    <lastmod>2026-10-07T15:26:42.224Z</lastmod>
   </url>
 </urlset>
