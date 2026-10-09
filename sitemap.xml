@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://schmoigl.github.io/test-project/src/utilities.html</loc>
+    <lastmod>2026-10-09T10:28:15.927Z</lastmod>
+  </url>
+  <url>
+    <loc>https://schmoigl.github.io/test-project/code-databases-api.html</loc>
+    <lastmod>2026-10-09T09:57:23.071Z</lastmod>
+  </url>
+  <url>
     <loc>https://schmoigl.github.io/test-project/index.html</loc>
-    <lastmod>2026-10-09T08:57:04.502Z</lastmod>
+    <lastmod>2026-10-09T10:30:03.754Z</lastmod>
   </url>
 </urlset>
