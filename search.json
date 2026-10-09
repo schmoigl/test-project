@@ -1,5 +1,40 @@
 [
   {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Quarto Example",
+    "section": "",
+    "text": "SOme text left\n\nsome text right\n\n\n\nprint(some_text)\n\n[1] \"Hey we can reference it!\""
+  },
+  {
+    "objectID": "index.html#basic-syntax",
+    "href": "index.html#basic-syntax",
+    "title": "Quarto Example",
+    "section": "Basic Syntax",
+    "text": "Basic Syntax\nOne star makes text italic (*italic*), two stars make it bold (**bold**): italic text bold text\nWrite links as [text](url). Options go in curly braces afterwards, e.g. {target=\"_blank\"} opens the link in a new tab: This is a link to the lecture notes.\nSince the output is a web page, you can also write plain HTML: Same link\nImages work like links, but with a ! in front: ![caption](path). Size and alignment are set in curly braces:\n\n\n\nImages\n\n\nQuarto turns every element into HTML, and you can label elements so that CSS rules (in style.css) can target them:\n\nA class (.name) can be given to many elements, and every one of them gets the same style.\nAn ID (#name) must be unique on the page and targets exactly one element.\nA div (::: {.name} … :::) is a box that groups several elements, so you can style them together.\n\nClasses and IDs go in curly braces after a link or image. This link has the class myLink (green, no underline). Move your mouse over it: the :hover rule in style.css underlines it and makes it darker:\n[Link to WIFO](https://www.wifo.ac.at){target=\"_blank\" .myLink}\nLink to WIFO\nThis link also has the ID bigLink, so the #bigLink rule makes it bigger as well:\n[Big link to WIFO](https://www.wifo.ac.at){target=\"_blank\" .myLink #bigLink}\nBig link to WIFO\nQuarto also comes with built-in classes, so you don’t have to write the CSS yourself. With .columns and .column, content is placed side by side. Divs can be nested: the outer div needs more colons (::::) than the inner ones, so Quarto knows which ::: closes which div:\n:::: {.columns}\n\n::: {.column width=\"50%\"}\n#### Left column\nText, images or code output.\n:::\n\n::: {.column width=\"50%\"}\n#### Right column\nMore text, images or code output.\n:::\n\n::::\n\n\n\nLeft column\nText, images or code output.\n\n\n\nRight column\nMore text, images or code output.\n\n\n\nAnother built-in class, .column-screen-inset, lets content break out of the narrow text column and use (almost) the full screen width. The table in the R section below uses it."
+  },
+  {
+    "objectID": "index.html#tex",
+    "href": "index.html#tex",
+    "title": "Quarto Example",
+    "section": "TeX",
+    "text": "TeX\nTeX (or LaTeX) is the standard typesetting system in science. Quarto borrows two of its most useful features: formulas and references.\nYou can write LaTeX (TeX) formulas. Enclose them in $...$ for a formula within the text, like \\(x_1 + x_2\\), or in $$...$$ for a centered formula on its own line:\n\\[ x_1 + x_2 \\]\nReferences are stored in bibliography.bib, in the BibTeX format used by LaTeX (linked in the header at the top of this file). Cite them with @key, and Quarto adds the reference list at the end of the page automatically: As seen Eppel et al. (2024)"
+  },
+  {
+    "objectID": "index.html#r-code",
+    "href": "index.html#r-code",
+    "title": "Quarto Example",
+    "section": "R code",
+    "text": "R code\nCode chunks start with ```{r}. Execution options are set with #| at the top of a chunk and control what is run and what is shown:\n\n\n\n\n\n\n\nOption\nWhat it does\n\n\n\n\neval: false\nDo not run the code (just show it)\n\n\necho: false\nRun the code, but hide it in the output\n\n\noutput: false\nRun the code, but hide all of its results\n\n\nmessage: false\nHide messages (e.g. when loading packages)\n\n\nwarning: false\nHide warnings\n\n\nerror: true\nShow errors in the output instead of stopping the render\n\n\ninclude: false\nRun the code, but hide both code and results\n\n\n\nOptions can also be set for the whole document in the header at the top (e.g. execute: echo: false). The chunk below shows its code (echo: true) but hides the package messages (message: false):\n\nlibrary(tidyverse)\nlibrary(kableExtra)\n\ndata &lt;- read_csv(\"data/cases.csv\")\n\nplot_data &lt;- data %&gt;%\n  separate(case_nr, c(\"court\", \"case_nr\"), \", \") %&gt;%\n  group_by(court, month) %&gt;%\n  count(name = \"cases\") %&gt;%\n  group_by(court) %&gt;%\n  mutate(sum_cases = sum(cases, na.rm = TRUE)) %&gt;%\n  filter(sum_cases &gt; 100) %&gt;%\n  ungroup()\n\nwrite_csv(plot_data, \"data/plot_data.csv\")\n\nWithout options, both the code and its output (here a table) are shown. The chunk is wrapped in a ::: {.column-screen-inset} div, so the table uses the full screen width:\n\n\nplot_data %&gt;%\n  filter(row_number() &lt;= 15) %&gt;%\n  kable(\"html\")\n\n\n\n\ncourt\nmonth\ncases\nsum_cases\n\n\n\n\nBG Favoriten\n2007-01-01\n10\n624\n\n\nBG Favoriten\n2007-02-01\n11\n624\n\n\nBG Favoriten\n2007-03-01\n9\n624\n\n\nBG Favoriten\n2007-04-01\n11\n624\n\n\nBG Favoriten\n2007-05-01\n8\n624\n\n\nBG Favoriten\n2007-06-01\n8\n624\n\n\nBG Favoriten\n2007-07-01\n7\n624\n\n\nBG Favoriten\n2007-08-01\n8\n624\n\n\nBG Favoriten\n2007-09-01\n4\n624\n\n\nBG Favoriten\n2007-10-01\n4\n624\n\n\nBG Favoriten\n2007-11-01\n9\n624\n\n\nBG Favoriten\n2007-12-01\n11\n624\n\n\nBG Favoriten\n2008-01-01\n6\n624\n\n\nBG Favoriten\n2008-02-01\n8\n624\n\n\nBG Favoriten\n2008-03-01\n11\n624\n\n\n\n\n\n\nWith inline code (`{r} data$case_nr[1]`) results appear directly in the text, so numbers update automatically when the data changes: The first case is the case BG Telfs, 6 S 12/06m"
+  },
+  {
+    "objectID": "index.html#interactive-elements-ojs",
+    "href": "index.html#interactive-elements-ojs",
+    "title": "Quarto Example",
+    "section": "Interactive elements (OJS)",
+    "text": "Interactive elements (OJS)\nOJS chunks (```{ojs}) run JavaScript in the reader’s browser, so the page stays interactive without a server. Move the slider:\n\nviewof rating = Inputs.range([1, 10], {value: 5, step: 1, label: \"Rating\"})\n\n\n\n\n\n\nI would rate this class \nOJS can read the data that the R code saved above:\n\nraw = FileAttachment(\"data/plot_data.csv\")\n\nplot_data = raw.csv()\n\nplot_data\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nnew Set(plot_data.map(d =&gt; d.court))\n\n\n\n\n\n\n\n\nThe chart and text below react to the inputs. OJS cells may appear in any order, since they update whenever a value they depend on changes:\n\nimport {vl} from \"@vega/vega-lite-api\"\n\nvl.markLine()\n  .encode(\n    vl.x()\n      .fieldT(\"month\")\n      .axis({ grid: false }),\n    vl.y()\n      .fieldQ(\"cases\"),\n  )\n  .data(plot_data.filter(d =&gt; d.court == court))\n  .width(width / 2)\n  .height(300)\n//   .config(config)\n  .render({ renderer: \"svg\" })\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThe chart width is set with .width(width / 2). width is a built-in OJS value: the width of the page’s text column in pixels. It updates whenever the browser window is resized, and everything that uses it (like the chart) is redrawn. We subtract 100 to leave room for the axis labels. Resize your window and watch the number below change:\n\nwidth\n\n\n\n\n\n\n\nviewof court = Inputs.select(\n  [\"BG Favoriten\", \"BG Fünfhaus\"],\n  {label: \"Select a court: \"}\n  )\n\nviewof month = Inputs.select(\n  [\"2008-01-01\", \"2009-01-01\"],\n  {label: \"Select a year: \"}\n  )\n\nnumberOfCases = plot_data.filter(d =&gt; d.court == court && d.month == month).map(d =&gt; d.cases)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nIn the  in the year  the number of cases was"
+  },
+  {
     "objectID": "code-databases-api.html",
     "href": "code-databases-api.html",
     "title": "Databases and APIs",
@@ -68,40 +103,5 @@
     "title": "Databases and APIs",
     "section": "data.table",
     "text": "data.table\ndata.table does the same with a concise dt[i, j, by] syntax: i selects rows, j computes columns and by groups. := modifies the table in place, .N counts rows, and chaining [...][...] plays the role of the pipe. It is very fast and memory efficient on large data:\n\ndt &lt;- fread(\"data/cases.csv\")\n\nplot_data &lt;-\n  dt[, c(\"court\", \"case_nr\") := tstrsplit(case_nr, \", \")\n    ][, .(cases = .N), by = .(court, month)\n    ][, sum_cases := sum(cases), by = court\n    ][sum_cases &gt; 100]\n\nAlternatives in other languages are pandas and polars in Python (polars also exists for R) and Arquero in JavaScript."
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Quarto Example",
-    "section": "",
-    "text": "SOme text left\n\nsome text right\n\n\n\nprint(some_text)\n\n[1] \"Hey we can reference it!\""
-  },
-  {
-    "objectID": "index.html#basic-syntax",
-    "href": "index.html#basic-syntax",
-    "title": "Quarto Example",
-    "section": "Basic Syntax",
-    "text": "Basic Syntax\nOne star makes text italic (*italic*), two stars make it bold (**bold**): italic text bold text\nWrite links as [text](url). Options go in curly braces afterwards, e.g. {target=\"_blank\"} opens the link in a new tab: This is a link to the lecture notes.\nSince the output is a web page, you can also write plain HTML: Same link\nImages work like links, but with a ! in front: ![caption](path). Size and alignment are set in curly braces:\n\n\n\nImages\n\n\nQuarto turns every element into HTML, and you can label elements so that CSS rules (in style.css) can target them:\n\nA class (.name) can be given to many elements, and every one of them gets the same style.\nAn ID (#name) must be unique on the page and targets exactly one element.\nA div (::: {.name} … :::) is a box that groups several elements, so you can style them together.\n\nClasses and IDs go in curly braces after a link or image. This link has the class myLink (green, no underline). Move your mouse over it: the :hover rule in style.css underlines it and makes it darker:\n[Link to WIFO](https://www.wifo.ac.at){target=\"_blank\" .myLink}\nLink to WIFO\nThis link also has the ID bigLink, so the #bigLink rule makes it bigger as well:\n[Big link to WIFO](https://www.wifo.ac.at){target=\"_blank\" .myLink #bigLink}\nBig link to WIFO\nQuarto also comes with built-in classes, so you don’t have to write the CSS yourself. With .columns and .column, content is placed side by side. Divs can be nested: the outer div needs more colons (::::) than the inner ones, so Quarto knows which ::: closes which div:\n:::: {.columns}\n\n::: {.column width=\"50%\"}\n#### Left column\nText, images or code output.\n:::\n\n::: {.column width=\"50%\"}\n#### Right column\nMore text, images or code output.\n:::\n\n::::\n\n\n\nLeft column\nText, images or code output.\n\n\n\nRight column\nMore text, images or code output.\n\n\n\nAnother built-in class, .column-screen-inset, lets content break out of the narrow text column and use (almost) the full screen width. The table in the R section below uses it."
-  },
-  {
-    "objectID": "index.html#tex",
-    "href": "index.html#tex",
-    "title": "Quarto Example",
-    "section": "TeX",
-    "text": "TeX\nTeX (or LaTeX) is the standard typesetting system in science. Quarto borrows two of its most useful features: formulas and references.\nYou can write LaTeX (TeX) formulas. Enclose them in $...$ for a formula within the text, like \\(x_1 + x_2\\), or in $$...$$ for a centered formula on its own line:\n\\[ x_1 + x_2 \\]\nReferences are stored in bibliography.bib, in the BibTeX format used by LaTeX (linked in the header at the top of this file). Cite them with @key, and Quarto adds the reference list at the end of the page automatically: As seen Eppel et al. (2024)"
-  },
-  {
-    "objectID": "index.html#r-code",
-    "href": "index.html#r-code",
-    "title": "Quarto Example",
-    "section": "R code",
-    "text": "R code\nCode chunks start with ```{r}. Execution options are set with #| at the top of a chunk and control what is run and what is shown:\n\n\n\n\n\n\n\nOption\nWhat it does\n\n\n\n\neval: false\nDo not run the code (just show it)\n\n\necho: false\nRun the code, but hide it in the output\n\n\noutput: false\nRun the code, but hide all of its results\n\n\nmessage: false\nHide messages (e.g. when loading packages)\n\n\nwarning: false\nHide warnings\n\n\nerror: true\nShow errors in the output instead of stopping the render\n\n\ninclude: false\nRun the code, but hide both code and results\n\n\n\nOptions can also be set for the whole document in the header at the top (e.g. execute: echo: false). The chunk below shows its code (echo: true) but hides the package messages (message: false):\n\nlibrary(tidyverse)\nlibrary(kableExtra)\n\ndata &lt;- read_csv(\"data/cases.csv\")\n\nplot_data &lt;- data %&gt;%\n  separate(case_nr, c(\"court\", \"case_nr\"), \", \") %&gt;%\n  group_by(court, month) %&gt;%\n  count(name = \"cases\") %&gt;%\n  group_by(court) %&gt;%\n  mutate(sum_cases = sum(cases, na.rm = TRUE)) %&gt;%\n  filter(sum_cases &gt; 100) %&gt;%\n  ungroup()\n\nwrite_csv(plot_data, \"data/plot_data.csv\")\n\nWithout options, both the code and its output (here a table) are shown. The chunk is wrapped in a ::: {.column-screen-inset} div, so the table uses the full screen width:\n\n\nplot_data %&gt;%\n  filter(row_number() &lt;= 15) %&gt;%\n  kable(\"html\")\n\n\n\n\ncourt\nmonth\ncases\nsum_cases\n\n\n\n\nBG Favoriten\n2007-01-01\n10\n624\n\n\nBG Favoriten\n2007-02-01\n11\n624\n\n\nBG Favoriten\n2007-03-01\n9\n624\n\n\nBG Favoriten\n2007-04-01\n11\n624\n\n\nBG Favoriten\n2007-05-01\n8\n624\n\n\nBG Favoriten\n2007-06-01\n8\n624\n\n\nBG Favoriten\n2007-07-01\n7\n624\n\n\nBG Favoriten\n2007-08-01\n8\n624\n\n\nBG Favoriten\n2007-09-01\n4\n624\n\n\nBG Favoriten\n2007-10-01\n4\n624\n\n\nBG Favoriten\n2007-11-01\n9\n624\n\n\nBG Favoriten\n2007-12-01\n11\n624\n\n\nBG Favoriten\n2008-01-01\n6\n624\n\n\nBG Favoriten\n2008-02-01\n8\n624\n\n\nBG Favoriten\n2008-03-01\n11\n624\n\n\n\n\n\n\nWith inline code (`{r} data$case_nr[1]`) results appear directly in the text, so numbers update automatically when the data changes: The first case is the case BG Telfs, 6 S 12/06m"
-  },
-  {
-    "objectID": "index.html#interactive-elements-ojs",
-    "href": "index.html#interactive-elements-ojs",
-    "title": "Quarto Example",
-    "section": "Interactive elements (OJS)",
-    "text": "Interactive elements (OJS)\nOJS chunks (```{ojs}) run JavaScript in the reader’s browser, so the page stays interactive without a server. Move the slider:\n\nviewof rating = Inputs.range([1, 10], {value: 5, step: 1, label: \"Rating\"})\n\n\n\n\n\n\nI would rate this class \nOJS can read the data that the R code saved above:\n\nraw = FileAttachment(\"data/plot_data.csv\")\n\nplot_data = raw.csv()\n\nplot_data\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nnew Set(plot_data.map(d =&gt; d.court))\n\n\n\n\n\n\n\n\nThe chart and text below react to the inputs. OJS cells may appear in any order, since they update whenever a value they depend on changes:\n\nimport {vl} from \"@vega/vega-lite-api\"\n\nvl.markLine()\n  .encode(\n    vl.x()\n      .fieldT(\"month\")\n      .axis({ grid: false }),\n    vl.y()\n      .fieldQ(\"cases\"),\n  )\n  .data(plot_data.filter(d =&gt; d.court == court))\n  .width(width / 2)\n  .height(300)\n//   .config(config)\n  .render({ renderer: \"svg\" })\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThe chart width is set with .width(width / 2). width is a built-in OJS value: the width of the page’s text column in pixels. It updates whenever the browser window is resized, and everything that uses it (like the chart) is redrawn. We subtract 100 to leave room for the axis labels. Resize your window and watch the number below change:\n\nwidth\n\n\n\n\n\n\n\nviewof court = Inputs.select(\n  [\"BG Favoriten\", \"BG Fünfhaus\"],\n  {label: \"Select a court: \"}\n  )\n\nviewof month = Inputs.select(\n  [\"2008-01-01\", \"2009-01-01\"],\n  {label: \"Select a year: \"}\n  )\n\nnumberOfCases = plot_data.filter(d =&gt; d.court == court && d.month == month).map(d =&gt; d.cases)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nIn the  in the year  the number of cases was"
   }
 ]

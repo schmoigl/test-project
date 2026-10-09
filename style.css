@@ -3,6 +3,14 @@ body {
     font-family: "Century Gothic"
 }
 
+#columnById {
+    font-size: 32px;
+}
+
+.myColumn {
+    background-color: blueviolet;
+}
+
 /* Class: applies to every element with class="myLink" */
 .myLink {
     text-decoration: none;
