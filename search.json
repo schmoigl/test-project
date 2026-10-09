@@ -74,7 +74,7 @@
     "href": "index.html",
     "title": "Quarto Example",
     "section": "",
-    "text": "SOme text left\n\n\nsome text right\n\n\n\nprint(some_text)\n\n[1] \"Hey we can reference it!\""
+    "text": "SOme text left\n\nsome text right\n\n\n\nprint(some_text)\n\n[1] \"Hey we can reference it!\""
   },
   {
     "objectID": "index.html#basic-syntax",
