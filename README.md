@@ -18,6 +18,7 @@ Add your team (name + members) on an empty `- ` line below:
 - Code & Cognition: Emma Boydens, Jens Vorsselmans, Marie Pittevils
 - Humans Vs Code: Eugeniu, Gergely, Andrei
 - Forking Legends: Kolos Sejlinger, Vince Stampay-Komesz
+- Team Keisi: Keisi Kapaj
 
 Don't forget to pick a funny name that is a pun on the contents of this class! Some inspirations from the past:
 
